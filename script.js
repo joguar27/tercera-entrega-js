@@ -23,7 +23,6 @@ nombre: "alimentoBperros",
     }
 ]
 
-
 let shopContent = document.getElementById("shopContent")
 const verCarrito = document.getElementById("btn-carrito")
 console.log(verCarrito)
@@ -66,10 +65,6 @@ productos.forEach((product)=>{
 
 let carrito = []
 
-
-
-
-
 function actualizarCarrito(){
 
   contenidoCarrito.innerHTML=""
@@ -92,10 +87,6 @@ function actualizarCarrito(){
     eliminar.addEventListener("click",()=>{
       eliminarProducto(product.id)
     })
-    
-    
-    
-
   })
 
   const total = carrito.reduce((acc,el)=>acc + el.precio,0)
@@ -119,7 +110,6 @@ const eliminarProducto=(id)=>{
   })
   actualizarCarrito()
 }
-
 
 function probando(){
   console.log("probando")
