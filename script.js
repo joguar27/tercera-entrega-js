@@ -1,117 +1,111 @@
-const productos = [{
-  id: 1,
-  nombre: "alimentoAperros",
-  precio: 5000,
-  img: "perros.png"
-},{
-  id: 2,
-nombre: "alimentoBperros",
-  precio: 8000,
-  img: "perros.png"
-},
-{
-  id: 3,
-  nombre: "alimentoAgatos",
-  precio: 1000,
-  img: "gatos.png"
+const productos = [
+  {
+    id: 1,
+    nombre: "alimentoAperros",
+    precio: 5000,
+    img: (src = "./fotos/alimentoPerros1.jpg"),
   },
   {
-    id:4,
+    id: 2,
+    nombre: "alimentoBperros",
+    precio: 8000,
+    img: (src = "./fotos/alimentoPerros1.jpg"),
+  },
+  {
+    id: 3,
+    nombre: "alimentoAgatos",
+    precio: 1000,
+    img: (src = "./fotos/alimentoGatos1.jpg"),
+  },
+  {
+    id: 4,
     nombre: "alimentoBgatos",
     precio: 1500,
-    img: "gatos.png"
-    }
-]
+    img: (src = "./fotos/alimentoGatos1.jpg"),
+  },
+];
 
-let shopContent = document.getElementById("shopContent")
-const verCarrito = document.getElementById("btn-carrito")
-console.log(verCarrito)
-const contenidoCarrito = document.getElementById("contentCarrito")
-const generalCarrito = document.getElementById("generalCarrito")
-const spanTotal = document.getElementById("total")
+let shopContent = document.getElementById("shopContent");
+const verCarrito = document.getElementById("btn-carrito");
+console.log(verCarrito);
+const contenidoCarrito = document.getElementById("contentCarrito");
+const generalCarrito = document.getElementById("generalCarrito");
+const spanTotal = document.getElementById("total");
 
-console.log(shopContent)
+console.log(shopContent);
 
-productos.forEach((product)=>{
-  let content = document.createElement("div")
-  content.className="card"
-  content.style.width = "18rem"
+productos.forEach((product) => {
+  let content = document.createElement("div");
+  content.className = "card";
+  content.style.width = "18rem";
   content.innerHTML = `
   <img src="${product.img}"/>
           <h3>${product.nombre}</h3>
           <p>${product.precio}</p>
   `;
 
-  let comprar = document.createElement("button")
-  comprar.innerText = "comprar"
-  comprar.className = "btn btn-primary"
-  content.append(comprar)
+  let comprar = document.createElement("button");
+  comprar.innerText = "comprar";
+  comprar.className = "btn btn-primary";
+  content.append(comprar);
 
-  shopContent.append(content)
+  shopContent.append(content);
 
-  comprar.addEventListener("click",()=>{
-    carrito.push(
-      {
-        id: product.id,
-        nombre: product.nombre,
-        precio: product.precio,
-        img: product.img
-      }
-    )
-    console.log(carrito)
-  })
+  comprar.addEventListener("click", () => {
+    carrito.push({
+      id: product.id,
+      nombre: product.nombre,
+      precio: product.precio,
+      img: product.img,
+    });
+    console.log(carrito);
+  });
+});
 
-})
+let carrito = [];
 
-let carrito = []
+function actualizarCarrito() {
+  contenidoCarrito.innerHTML = "";
+  carrito.forEach((product) => {
+    let carritoContent = document.createElement("div");
+    carritoContent.className = "card";
+    carritoContent.style.width = "50%";
 
-function actualizarCarrito(){
-
-  contenidoCarrito.innerHTML=""
-  carrito.forEach((product)=>{
-    let carritoContent = document.createElement("div")
-    carritoContent.className="card"
-    carritoContent.style.width = "50%"
-    
     carritoContent.innerHTML = `
     <img src="${product.img}"/>
     <h3>${product.nombre}</h3>
     <p>${product.precio}<p>
     <button class="delete-producto btn btn-danger">Eliminar</button>
     `;
-    contenidoCarrito.append(carritoContent)
+    contenidoCarrito.append(carritoContent);
 
-    let eliminar = carritoContent.querySelector(".delete-producto")
-    console.log(eliminar)
+    let eliminar = carritoContent.querySelector(".delete-producto");
+    console.log(eliminar);
 
-    eliminar.addEventListener("click",()=>{
-      eliminarProducto(product.id)
-    })
-  })
+    eliminar.addEventListener("click", () => {
+      eliminarProducto(product.id);
+    });
+  });
 
-  const total = carrito.reduce((acc,el)=>acc + el.precio,0)
+  const total = carrito.reduce((acc, el) => acc + el.precio, 0);
 
-  console.log(total)
-  console.log(carrito)
-  spanTotal.innerText = total
-
+  console.log(total);
+  console.log(carrito);
+  spanTotal.innerText = total;
 }
 
-verCarrito.addEventListener("click",actualizarCarrito)
+verCarrito.addEventListener("click", actualizarCarrito);
 
-
-const eliminarProducto=(id)=>{
-  
-  console.log("eliminado")
-  const foundId = carrito.find((element)=>element.id===id)
-  console.log(foundId)
-  carrito = carrito.filter((carritoId)=>{
+const eliminarProducto = (id) => {
+  console.log("eliminado");
+  const foundId = carrito.find((element) => element.id === id);
+  console.log(foundId);
+  carrito = carrito.filter((carritoId) => {
     return carritoId != foundId;
-  })
-  actualizarCarrito()
-}
+  });
+  actualizarCarrito();
+};
 
-function probando(){
-  console.log("probando")
+function probando() {
+  console.log("probando");
 }
-
