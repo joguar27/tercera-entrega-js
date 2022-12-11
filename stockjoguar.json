@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "nombre": "alimentoAperros",
+    "precio": 5000,
+    "peso": 5
+  },
+  {
+    "id": 2,
+    "nombre": "alimentoBperros",
+    "peso": 10,
+    "precio": 8000
+  },
+  {
+    "id": 4,
+    "nombre": "alimentoAgatos",
+    "peso": 1,
+    "precio": 1000
+  },
+  {
+    "id": 5,
+    "nombre": "alimentoBgatos",
+    "peso": 3,
+    "precio": 1500
+  }
+]

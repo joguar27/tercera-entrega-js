@@ -176,9 +176,10 @@ fetch('https://jsonplaceholder.typicode.com/posts')
 .then((data) => {
   console.log(data[0].title) //me muestra contenido del titulo
   console.log(data[0].body) //me muestra contenido del cuerpo
-});
+})
 
 
+//para mostrar los datos en el DOM
 const lista = document.querySelector('#listado')
 fetch('https://jsonplaceholder.typicode.com/posts')
 .then((resp)=>resp.json())
@@ -196,13 +197,36 @@ fetch('https://jsonplaceholder.typicode.com/posts')
 
 
 
+/*console.log(fetch('stockjoguar.json'))
 
+fetch('stockjoguar.json')
+.then((resp) => console.log(resp))
 
+fetch('stockjoguar.json')
+.then((response) => response.json ()) //transforma la info
+.then((json) => console.log(json));
 
+fetch('stockjoguar.json')
+.then((response) => response.json ())
+.then((data) => {
+  console.log(data[0].title) //me muestra contenido del titulo
+  console.log(data[0].body) //me muestra contenido del cuerpo
+})
 
-
-
-
+const lista = document.querySelector('#listado')
+fetch('stockjoguar.json')
+.then((response)=>{response.json()})
+.then((data)=>{console.log(data)})
+.then((resp)=>resp.json())
+.then((data)=>{
+  data.forEach((post=>{
+    const li=document.createElement('li')
+    li.innerHTML=`
+    <h4>${post.title}</h4>
+    <p>${post.body}</p>`//
+    lista.append(li)
+  }))
+})/*
 
 
 
